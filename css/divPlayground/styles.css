@@ -1,0 +1,28 @@
+.box {
+  background-color: #aaccff;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  border: 5px solid #77aaff;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.box h2 {
+  margin: 20px;
+}
+
+.inside1 {
+  text-align: left;
+  background: #ccc;
+  margin: 10px auto;
+  display: block;
+  position: relative;
+  width: 80%;
+}
+
+p {
+  display: block;
+  margin:  0 10px;
+}

@@ -1,4 +1,4 @@
-_Ping Pong_
+# _Ping Pong_
 
 _This application will take an input from a user and then play a game of ping pong with it. (Displaying numbers up to said number with a little variation)_
 
@@ -10,18 +10,18 @@ _Play some ping pong! This application will take a number and display all number
 
 ## Specifications
 
-*It can count up to the provided number
-  *Example input: 4
-  *Example output: [1,2,3,4]
-*It displays 'ping' on numbers divisible by 3
-  *Example input: 3
-  *Example output: [1,2,"ping"]
-*It displays 'pong' on numbers divisible by 5
-  *Example input: 5
-  *Example output: [1,2,3,4,"pong"]
-*It displays 'ping pong' on numbers divisible by 3 & 5
-  *Example input: 15
-  *Example output: [1,2,"ping",4,"pong".... 13,14,"ping pong"]
+* It can count up to the provided number
+  * Example input: 4
+  * Example output: [1,2,3,4]
+* It displays 'ping' on numbers divisible by 3
+  * Example input: 3
+  * Example output: [1,2,"ping"]
+* It displays 'pong' on numbers divisible by 5
+  * Example input: 5
+  * Example output: [1,2,3,4,"pong"]
+* It displays 'ping pong' on numbers divisible by 3 & 5
+  * Example input: 15
+  * Example output: [1,2,"ping",4,"pong".... 13,14,"ping pong"]
 
 
 ## Setup/Installation Requirements
@@ -29,7 +29,7 @@ _Play some ping pong! This application will take a number and display all number
 _Clone the repository,_
 _open the index.html file,_
 _OR_
-_just visit [here](https://meichsteadt.github.io/trackSuggester)_
+_just visit [here](https://meichsteadt.github.io/pingPong)_
 
 ## Known Bugs
 

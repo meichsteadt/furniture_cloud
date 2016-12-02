@@ -1,0 +1,52 @@
+body {
+  font-family: sans-serif;
+}
+
+img {
+  display: block;
+}
+.friendPic {
+  border: 3px solid blue;
+}
+
+.body {
+  margin-left: 40px;
+}
+
+.friend {
+  float: left;
+  margin: 0 40px;
+  text-align: center;
+}
+
+.friend h3 {
+  color: blue;
+}
+
+.header {
+  background-color: #ffc260  ;
+  height: 80px;
+  position: relative;
+}
+
+.header h1 {
+  color: #f49600;
+  margin-left: 10px;
+  font-family: sans-serif;
+  position: absolute;
+  top: 25%;
+  transform: translate(0, -50%);
+}
+
+.number {
+  font-weight: bold;
+}
+
+em {
+  color: red;
+  font-style: normal;
+}
+
+.online {
+  margin: 10px auto;
+}

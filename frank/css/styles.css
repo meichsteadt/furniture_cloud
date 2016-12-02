@@ -1,0 +1,29 @@
+body {
+  font-family: serif;
+}
+
+h1, h2, h3, .nav li {
+  font-family: monospace;
+}
+
+a, a:visited {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+  opacity: 1;
+}
+
+.underline {
+  border-bottom: 2px solid black;
+  width: 100%;
+  margin: 0 auto 10px auto;
+}
+
+.stances {
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #eee;
+  padding: 20px;
+}
