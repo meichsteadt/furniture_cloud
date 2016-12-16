@@ -1,0 +1,130 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 21, ../sass/screen.scss */
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+}
+
+/* line 26, ../sass/screen.scss */
+h1, .h1, h2, .h2, h3, .h3 {
+  font-family: "Roboto", sans-serif;
+}
+
+/* line 30, ../sass/screen.scss */
+.box {
+  width: 31.33%;
+  height: auto;
+  margin: 20px 9%;
+  float: left;
+}
+/* line 34, ../sass/screen.scss */
+.box::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+/* line 39, ../sass/screen.scss */
+.box p {
+  float: right;
+  margin: 1px 5px;
+}
+/* line 43, ../sass/screen.scss */
+.box .left {
+  float: left;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* line 50, ../sass/screen.scss */
+.pallette {
+  margin: 0 auto;
+  display: block;
+  min-height: 150px;
+  width: 60%;
+}
+
+/* line 57, ../sass/screen.scss */
+.swatch {
+  width: 25%;
+  height: 150px;
+  margin: 60px 0;
+  float: left;
+}
+
+/* line 63, ../sass/screen.scss */
+.color-section::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* line 69, ../sass/screen.scss */
+.color {
+  display: block;
+  width: 100%;
+  height: 240px;
+  margin: 20px 0;
+}
+
+/* line 75, ../sass/screen.scss */
+.primary {
+  background-color: #9E7CC1;
+}
+
+/* line 79, ../sass/screen.scss */
+.secondary {
+  background-color: #C5E26A;
+}
+
+/* line 83, ../sass/screen.scss */
+.gray {
+  background-color: #4b484f;
+}
+
+/* line 87, ../sass/screen.scss */
+.light-gray {
+  background-color: #f1edf4;
+}
+
+/* line 91, ../sass/screen.scss */
+.underline {
+  border-bottom: 2px solid #ccc;
+}
+
+/* line 95, ../sass/screen.scss */
+em {
+  font-weight: bold;
+}
+
+/* line 99, ../sass/screen.scss */
+.primary-font {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* line 103, ../sass/screen.scss */
+.secondary-font {
+  font-family: "Roboto", sans-serif;
+}
+
+/* line 107, ../sass/screen.scss */
+.primary-color-font {
+  color: #9E7CC1;
+}
+
+/* line 111, ../sass/screen.scss */
+.secondary-color-font {
+  color: #C5E26A;
+}
+
+/* line 115, ../sass/screen.scss */
+.gray-font {
+  color: #4b484f;
+}
+
+/* line 119, ../sass/screen.scss */
+.light-gray-font {
+  color: #f1edf4;
+}

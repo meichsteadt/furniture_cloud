@@ -1,0 +1,121 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+// @import "compass/reset";
+$title_font: 'Roboto', sans-serif;
+$body_font: 'Open Sans', sans-serif;
+$primaryColor: #9E7CC1;
+$secondaryColor: #C5E26A;
+$lightGray: mix($primaryColor, #fafafa, 10%);
+$darkGray: mix($primaryColor, #424242, 10%);
+@mixin shadow_card {
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.35), -2px 2px 8px rgba(0,0,0,0.35);
+}
+@mixin box($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+body {
+  font-family: $body_font;
+  font-size: 18px;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+  font-family: $title_font;
+}
+
+.box {
+  @include box(31.33%, auto);
+  margin: 20px 9%;
+  float: left;
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  & p {
+    float: right;
+    margin: 1px 5px;
+  }
+  & .left {
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.pallette {
+  margin: 0 auto;
+  display: block;
+  min-height: 150px;
+  width: 60%;
+}
+
+.swatch {
+  @include box(25%, 150px);
+  margin: 60px 0;
+  float: left;
+}
+
+.color-section::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.color {
+  display: block;
+  @include box(100%, 240px);
+  margin: 20px 0;
+}
+
+.primary {
+  background-color: $primaryColor;
+}
+
+.secondary {
+  background-color: $secondaryColor;
+}
+
+.gray {
+  background-color: $darkGray;
+}
+
+.light-gray {
+  background-color: $lightGray;
+}
+
+.underline {
+  border-bottom: 2px solid #ccc;
+}
+
+em {
+  font-weight: bold;
+}
+
+.primary-font {
+  font-family: $body_font;
+}
+
+.secondary-font {
+  font-family: $title_font;
+}
+
+.primary-color-font {
+  color: $primaryColor;
+}
+
+.secondary-color-font {
+  color: $secondaryColor;
+}
+
+.gray-font {
+  color: $darkGray;
+}
+
+.light-gray-font {
+  color: $lightGray;
+}
