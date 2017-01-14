@@ -1,0 +1,35 @@
+.indie {
+  font-family: 'Indie Flower', cursive;
+}
+.pacifico {
+  font-family: 'Pacifico', cursive;
+
+}
+.satisfy {
+  font-family: 'Satisfy', cursive;
+
+}
+.courgette {
+  font-family: 'Courgette', cursive;
+
+}
+.handlee {
+  font-family: 'Handlee', cursive;
+
+}
+.kalam {
+  font-family: 'Kalam', cursive;
+
+}
+
+nav {
+  margin-bottom: 20px;
+}
+
+nav:nth-of-type(even) {
+  background-color: #26a69a;
+}
+
+nav:nth-of-type(3n) {
+  background-color: #2196f3;
+}
