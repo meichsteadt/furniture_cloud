@@ -9,7 +9,11 @@
   </head>
 
   <body>
-    <%= flash[:notice] %>
+    <p style="position: absolute; top: 0; left:0; color:#fff; z-index: 3;"><%= flash[:notice] %></p>
     <%= yield %>
+    <footer>
+      <p>&copy; 2017</p>
+      <p>Are you me? Sign in <a href="https://github.com/login/oauth/authorize?&client_id=<%= ENV["CLIENT_ID"] %>">here</a></p>
+    </footer>
   </body>
 </html>
