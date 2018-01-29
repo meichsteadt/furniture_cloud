@@ -1,0 +1,6 @@
+<% if @customer %>
+  <h1>New Order for <%= @customer.first_name %></h1>
+<% else %>
+  <h1>New Order</h1>
+<% end %>
+<%= render "form", order: @order %>

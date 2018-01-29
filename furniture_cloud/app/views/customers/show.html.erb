@@ -1,0 +1,31 @@
+<h1 class="center-align"><%= @customer.first_name + " " + @customer.last_name %></h1>
+<h4 class="center-align">Lifetime value: <%= number_to_currency @customer.lifetime_value %></h4>
+<h4 class="center-align">Last purchase: <%= @customer.last_purchase.try(:strftime, "%B %d, %Y") %></h4>
+
+<p class="center-align"><%= @customer.street + ", " + @customer.city + ", " + @customer.state + " #{@customer.zip}"%></p>
+
+<table>
+  <tr>
+    <th>Order Id</th>
+    <th>Order date</th>
+    <th>Total</th>
+  </tr>
+  <% @customer.orders.each do |order| %>
+    <tr>
+      <td><%= link_to order.id, user_order_path(current_user, order) %></td>
+      <td><%= order.created_at.strftime("%B %d, %Y") %></td>
+      <td><%= number_to_currency order.total %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Edit', edit_user_customer_path(current_user, @customer) %> |
+<%= link_to 'Back', user_customers_path(current_user) %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('select').material_select();
+    $('.modal').modal();
+    $('.tooltipped').tooltip({delay: 50});
+  });
+</script>

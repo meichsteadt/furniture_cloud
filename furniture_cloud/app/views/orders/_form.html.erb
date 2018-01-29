@@ -1,0 +1,31 @@
+<% unless order.customer %>
+  <%= render "/autocomplete" %>
+  <h3 class="center-align">Or</h3>
+  <div class="center-align">
+    <a class="waves-effect waves-light btn teal">Add new customer</a>
+  </div>
+<% else %>
+  <%= form_for([current_user, order]) do |f| %>
+    <% if order.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+        <ul>
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.select :status, options_for_select([["Select order status", nil, disabled: true, selected: !f.object.status],["Needs ordering", "needs ordering"], ["Ordered", "ordered"], ["Needs delivery", "needs delivery"], ["Order complete", "order complete"]]),{selected: f.object.status},  onchange: "$.ajax({url: '/users/#{current_user.id}/orders/#{order.id}', type: 'PUT', data: {status: this.value}, dataType: 'script'})" %>
+  <% end %>
+  <% if order.id %>
+    <h6>Add Products</h6>
+    <%= render "/order_items/remote_form", order: order, order_item: order.order_items.new() %>
+  <% end %>
+<% end %>
+<script type="text/javascript">
+  $(function() {
+    $('select').material_select();
+  })
+</script>

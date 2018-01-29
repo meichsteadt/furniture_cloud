@@ -1,0 +1,38 @@
+<h1 class="center-align">Orders</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Date</th>
+      <th colspan="2">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= link_to order.customer.first_name + " " + order.customer.last_name, user_customer_path(current_user, order.customer) %></td>
+      <td><%= order.created_at.strftime("%b %d, %Y") %></td>
+      <td><%= number_to_currency order.total %></td>
+      <td>
+        <%= link_to user_order_path(current_user, order), class: "btn-floating waves-effect waves-light teal right tooltipped", "data-position":"top", "data-delay":"100", "data-tooltip":"View Order" do %>
+          <i class="material-icons">near_me</i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <tr>
+    <td colspan="2"><strong>Total</strong></td>
+    <td><strong><%= number_to_currency @orders.map {|e| e.total}.sum %></strong></td>
+  </tr>
+</tbody>
+</table>
+
+<%= link_to new_user_order_path(current_user), class: "fixed btn-floating btn-large waves-effect waves-light red right tooltipped", "data-position":"top", "data-delay":"100", "data-tooltip":"New Order" do %>
+  <i class="material-icons">add</i>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('.tooltipped').tooltip({delay: 50});
+  })
+</script>

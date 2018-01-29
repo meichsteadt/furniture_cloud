@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col s12">
+    <div class="row">
+      <h3 class="center-align">Find a customer</h3>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">person</i>
+          <%= text_field_tag :search,"",  id: "autocomplete", class: "autocomplete", autocomplete: "off", onchange: "$.post('/search', {search: this.value})" %>
+          <%= label_tag :search %>
+        </div>
+    </div>
+  </div>
+  <div class="col s12">
+    <table id="search_results">
+
+    </table>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $('input.autocomplete').autocomplete({
+      data: {
+        <% current_user.customers.each do |customer| %>
+          "<%= customer.first_name + " " + customer.last_name%>": null,
+        <% end %>
+      },
+      limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+      onAutocomplete: function(val) {
+        console.log(val)
+        // Callback function when value is autcompleted.
+      },
+      minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+    });
+  })
+</script>

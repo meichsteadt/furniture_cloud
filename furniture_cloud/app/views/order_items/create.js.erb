@@ -1,0 +1,11 @@
+$(function() {
+  $('input.select-dropdown')[0].value = '';
+  $('input.select-dropdown')[1].value = '';
+  $('#order_item_quantity')[0].value = null;
+  $('#flash_notice').text('Product added')
+  $('#order_items tbody').append('<td><%= @order_item.product.brand.name %></td>' +
+  '<td><%= @order_item.product.name %></td>' +
+  '<td><%= number_to_currency @order_item.product.price %></td>' +
+  '<td><%= @order_item.quantity %></td>'
+  )
+})

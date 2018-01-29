@@ -1,0 +1,7 @@
+$(function() {
+  $('select').material_select('destroy');
+  <% Brand.find(params[:brand_id]).products.each do |product| %>
+    $('#order_item_product_id').append("<option value='<%= product.id %>'><%= product.name %></option>")
+  <% end %>
+  $('select').material_select();
+})

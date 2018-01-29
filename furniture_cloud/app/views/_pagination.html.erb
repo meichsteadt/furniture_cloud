@@ -1,0 +1,19 @@
+<ul class="pagination center-align">
+  <% if models.page(page_number).first_page? %>
+  <li class="disabled"><a href="<%= params.permit.except(:controller).to_query %>"><i class="material-icons">chevron_left</i></a></li>
+  <% else %>
+  <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+  <% end %>
+  <% models.page(1).total_pages.times do |i| %>
+    <% if models.page(i).current_page == i + 1 %>
+      <li class="active"><%= link_to (i + 1), "?" + params.permit(:sort_by).merge(page_number: i + 1).to_query %></li>
+    <% else %>
+      <li class="waves-effect"><%= link_to (i + 1), "?" + params.permit(:sort_by).merge(page_number: i + 1).to_query %></li>
+    <% end %>
+  <% end %>
+  <% if models.page(page_number).last_page? %>
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  <% else %>
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  <% end %>
+</ul>

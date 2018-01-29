@@ -1,0 +1,6 @@
+$(function() {
+  $('#modal1').modal('close');
+  $('select').append('<option data-icon="<%= @brand.logo %>" class="left circle" value="<%= @brand.id %>"><%= @brand.name %></option>')
+  $('select').material_select('destroy');
+  $('select').material_select();
+})

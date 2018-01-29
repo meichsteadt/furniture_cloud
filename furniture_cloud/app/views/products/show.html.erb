@@ -1,0 +1,59 @@
+<h1 class="center-align"><%= @product.name %></h1>
+<h5 class="center-align"><%= link_to @product.brand.name, user_brand_path(current_user, @product.brand) %></h5>
+<h5 class="center-align">Price: <%= number_to_currency @product.price %></h5>
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Order ID</th>
+      <th>Quantity</th>
+      <th>Total</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product.order_items.each do |order_item| %>
+        <tr>
+          <td>
+            <%= link_to (order_item.order.customer.first_name + " #{order_item.order.customer.last_name}"), user_customer_path(current_user, order_item.order.customer) %>
+          </td>
+          <td><%= link_to order_item.id, user_order_path(current_user, order_item.order) %></td>
+          <td><%= order_item.quantity %></td>
+          <td><%= number_to_currency(order_item.quantity * @product.price) %></td>
+          <td>
+            <%= link_to  edit_user_order_path(current_user, order_item.order), class: "yellow-text text-darken-2 waves-effect" do %>
+              <i class="material-icons">edit</i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user_order_path(current_user, order_item.order), method: :delete, data: { confirm: 'Are you sure?' }, class: "grey-text waves-effect" do %>
+              <i class="material-icons">delete</i>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div id="image_modal" class="modal">
+  <div class="modal-content">
+    <img src="<%= @product.image %>" alt="<%= @product.name %>" class="responsive-img">
+  </div>
+</div>
+
+
+<%= link_to edit_user_product_path(current_user, @product), class: "fixed btn-floating btn-large waves-effect waves-light red right tooltipped", "data-position":"top", "data-delay":"100", "data-tooltip":"Edit Product" do %>
+  <i class="material-icons">edit</i>
+<% end %>
+<%= link_to "#image_modal", class: "modal-trigger fixed fixed-left-1 btn-floating btn-large waves-effect waves-light teal right tooltipped", "data-position":"top", "data-delay":"100", "data-tooltip":"Show Product Image" do %>
+  <i class="material-icons">image</i>
+<% end %>
+
+<%= link_to 'Back', user_products_path %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.modal').modal();
+  });
+</script>

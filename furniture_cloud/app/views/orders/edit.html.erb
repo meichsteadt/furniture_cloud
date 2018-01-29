@@ -1,0 +1,24 @@
+<h5>Edit Order</h5>
+<%= render "form", order: @order %>
+<h5 class="center-align">Current Order</h5>
+<table id="order_items">
+  <tr>
+    <th>Brand</th>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+  </tr>
+  <% @order.order_items.each do |item| %>
+    <% if item.id %>
+      <tr>
+        <td><%= item.product.brand.name %></td>
+        <td><%= item.product.name %></td>
+        <td><%= number_to_currency item.product.price %></td>
+        <td><%= item.quantity %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<%= link_to user_customer_order_path(current_user, @order.customer, @order), class: "fixed btn-floating btn-large waves-effect waves-light red right tooltipped", "data-position":"top", "data-delay":"100", "data-tooltip":"Finish Order" do %>
+  <i class="material-icons">done</i>
+<% end %>

@@ -1,0 +1,54 @@
+<%= form_for([current_user, customer]) do |f| %>
+  <% if customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="input-field col l6 s12">
+      <%= f.text_field :first_name, class: "validate", required: true %>
+      <%= f.label :first_name, "First Name *" %>
+    </div>
+
+    <div class="input-field col l6 s12">
+      <%= f.text_field :last_name, class: "validate", required: true %>
+      <%= f.label :last_name, "Last Name *" %>
+    </div>
+
+    <div class="input-field col l6 s12">
+      <%= f.text_field :email, class: "validate", required: true %>
+      <%= f.label :email, "Email *" %>
+    </div>
+
+    <div class="input-field col l6 s12">
+      <%= f.text_field :street, class: "validate", required: true %>
+      <%= f.label :street, "Street *" %>
+    </div>
+
+    <div class="input-field col l6 s12">
+      <%= f.text_field :city, class: "validate", required: true %>
+      <%= f.label :city, "Last Name *" %>
+    </div>
+
+    <div class="input-field col l6 s12">
+      <%= f.text_field :state, class: "validate", required: true, value: "CA" %>
+      <%= f.label :state, "State *" %>
+    </div>
+
+    <div class="input-field col l6 s12">
+      <%= f.number_field :zip, class: "validate", required: true %>
+      <%= f.label :zip, "Zip *" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "waves-effect waves-light btn blue lighten-2" %>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+$(function() {
+  $('#search_results').children().remove();
+  <% @search.each do |customer| %>
+  $('#search_results').append('' +
+    '<tr><th>Customer Name</th>' +
+    '<th colspan="2">Customer Address</th>' +
+    '</tr>'+
+    '<tr><td><%= link_to (customer.first_name + ' ' + customer.last_name), user_customer_path(current_user, customer) %></td>' +
+    '<td><%= customer.full_address %></td>' +
+    '<td>' +
+    '<%= form_for([current_user, customer, customer.orders.new()]) do |f| %>' +
+    '<button type="submit" class="btn waves-effect waves-light btn-floating orange lighten-2 tooltipped" data-tooltip="New order" data-position="top" data-delay="100"><i class="material-icons right">add</i></button></td>' +
+    '<% end %>' +
+    '</tr>'
+  )
+  <% end %>
+ $('.tooltipped').tooltip({delay: 50});
+})

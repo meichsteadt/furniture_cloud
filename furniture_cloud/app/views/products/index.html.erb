@@ -1,0 +1,42 @@
+<h1>Products</h1>
+
+<%= render "/date_picker", start_date: @start_date, end_date: @end_date, action: "products" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Brand</th>
+      <th>Name</th>
+      <th>Sales</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+        <tr>
+          <td>
+            <%= link_to product.brand.name, user_brand_path(current_user, product.brand) %>
+          </td>
+          <td><%= link_to product.name, user_product_path(current_user, product) %></td>
+          <td><%= number_to_currency(product.sales(@start_date, @end_date)) %></td>
+          <td>
+            <%= link_to  edit_user_product_path(current_user, product), class: "yellow-text text-darken-2 waves-effect" do %>
+              <i class="material-icons">edit</i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user_product_path(current_user, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "grey-text waves-effect" do %>
+              <i class="material-icons">delete</i>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render "/pagination", models: @products, page_number: @page_number %>
+
+<%= link_to new_user_product_path(current_user), class: "btn-floating btn-large waves-effect waves-light red right tooltipped", "data-position":"top", "data-delay":"100", "data-tooltip":"Add Product" do %>
+  <i class="material-icons">add</i>
+<% end %>

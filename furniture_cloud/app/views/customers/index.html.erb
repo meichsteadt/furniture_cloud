@@ -1,0 +1,46 @@
+<h1>Customers</h1>
+
+<%= render "/date_picker", start_date: @start_date, end_date: @end_date, action: "customers" %>
+
+<table>
+  <thead>
+    <tr>
+      <th class="<%= active?(params, 'last_name') %> <%= reversed?(params, 'last_name') %>">
+        <%= link_to "Name", user_customers_path(sort_by: "last_name", sort_order: reverse_sort_order(params[:sort_order]))%>
+      </th>
+      <th class="<%= active?(params, 'lifetime_value') %> <%= reversed?(params, 'lifetime_value') %>">
+        <%= link_to "Lifetime Value", user_customers_path(sort_by: "lifetime_value", sort_order: reverse_sort_order(params[:sort_order]))%>
+      </th>
+      <th class="<%= active?(params, 'last_purchase') %> <%= reversed?(params, 'last_purchase') %>">
+        <%= link_to "Last purchase", user_customers_path(sort_by: "last_purchase", sort_order: reverse_sort_order(params[:sort_order]))%>
+      </th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= link_to ("#{customer.last_name}, #{customer.first_name}"), user_customer_path(current_user, customer) %></td>
+        <td><%= number_to_currency(customer.lifetime_value) %></td>
+        <td><%= customer.last_purchase.try(:strftime, "%B %d, %Y") %></td>
+        <td>
+          <%= link_to  edit_user_customer_path(current_user, customer), class: "yellow-text text-darken-2 waves-effect" do %>
+            <i class="material-icons">edit</i>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to user_customer_path(current_user, customer), method: :delete, data: { confirm: 'Are you sure?' }, class: "grey-text waves-effect" do %>
+            <i class="material-icons">delete</i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render "/pagination", models: @customers, page_number: @page_number %>
+
+<%= link_to new_user_customer_path(current_user), class: "btn-floating btn-large waves-effect waves-light red right tooltipped", "data-position":"top", "data-delay":"100", "data-tooltip":"Add Customer" do %>
+  <i class="material-icons">add</i>
+<% end %>

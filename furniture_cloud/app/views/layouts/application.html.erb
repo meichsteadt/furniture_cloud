@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FurnitureCloud</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if current_user %>
+      <ul id="orders_menu" class="dropdown-content">
+        <li><%= link_to "New Order", new_user_order_path(current_user) %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Show Orders", user_orders_path(current_user) %></li>
+      </ul>
+      <ul id="customers_menu" class="dropdown-content">
+        <li><%= link_to "New Customer", new_user_customer_path(current_user) %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Show Customers", user_customers_path(current_user) %></li>
+      </ul>
+      <ul id="products_menu" class="dropdown-content">
+        <li><%= link_to "New Product", new_user_product_path(current_user) %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Show Products", user_products_path(current_user) %></li>
+      </ul>
+      <ul id="brands_menu" class="dropdown-content">
+        <li><%= link_to "New Brand", new_user_brand_path(current_user) %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Show Brands", user_brands_path(current_user) %></li>
+      </ul>
+    <% end %>
+    <nav class="blue lighten-2">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo"><i class="material-icons">cloud</i>Furniture Cloud</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if current_user %>
+          <li><a class="dropdown-button" data-activates="orders_menu" data-beloworigin="true">Orders<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button" data-activates="customers_menu" data-beloworigin="true">Customers<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button" data-activates="brands_menu" data-beloworigin="true">Brands<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button" data-activates="products_menu" data-beloworigin="true">Products<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+        <% else %>
+          <%- if controller_name != 'sessions' %>
+            <li><%= link_to "Sign in", new_session_path(resource_name) %></li>
+          <% end -%>
+
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <li><%= link_to "Sign up", new_registration_path(resource_name) %></li>
+          <% end -%>
+        <% end %>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <% if current_user %>
+          <li><%= link_to "Orders", user_orders_path(current_user) %></li>
+          <li><%= link_to "Products", user_products_path(current_user) %></li>
+          <li><%= link_to "Customers", user_customers_path(current_user) %></li>
+          <li><%= link_to "Brands", user_brands_path(current_user) %></li>
+          <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+        <% else %>
+          <%- if controller_name != 'sessions' %>
+            <li><%= link_to "Sign in", new_session_path(resource_name) %></li>
+          <% end -%>
+
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <li><%= link_to "Sign up", new_registration_path(resource_name) %></li>
+          <% end -%>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+    <div class="container">
+      <p id="flash_notice"><%= flash[:notice] %></p>
+      <p id="flash_alert"><%= flash[:alert] %></p>
+      <%= yield %>
+    </div>
+    <script type="text/javascript">
+      $(function() {
+        $(".button-collapse").sideNav();
+        $(".dropdown-button").dropdown();
+      })
+    </script>
+  </body>
+</html>
